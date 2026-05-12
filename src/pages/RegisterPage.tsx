@@ -40,22 +40,26 @@ export default function RegisterPage() {
 
   const handleRegister = useCallback(async (formValues: any) => {
     setServerError(null);
-    const res = await fetch(`${API}/auth/register`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ 
-        email: formValues.email, 
-        password: formValues.password 
-      }),
-    });
+    try {
+      const res = await fetch(`${API}/auth/register`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ 
+          email: formValues.email, 
+          password: formValues.password 
+        }),
+      });
 
-    if (!res.ok) {
-      const data = await res.json().catch(() => ({}));
-      setServerError(data.detail || "Erro ao criar conta.");
-      return;
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        setServerError(data.detail || "Erro ao criar conta.");
+        return;
+      }
+      
+      window.location.href = "/login?registered=true";
+    } catch {
+      setServerError("Erro de conexão. Verifique se o servidor está rodando.");
     }
-    
-    window.location.href = "/login?registered=true";
   }, []);
 
   const { values, errors, touched, isSubmitting, handleChange, handleBlur, handleSubmit } = 

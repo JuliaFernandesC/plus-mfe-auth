@@ -13,6 +13,7 @@ export default defineConfig({
         "./LoginPage": "./src/pages/LoginPage",
         './RegisterPage': './src/pages/RegisterPage',
         "./SuccessPage": "./src/pages/SuccessPage",
+        "./DashboardPage": "./src/pages/DashboardPage",
       },
       shared: ["react", "react-dom"],
     }),

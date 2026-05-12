@@ -1,7 +1,10 @@
 export interface LoginResponse {
-  token:   string;
-  refresh: string;
+  token?:   string;
+  refresh?: string;
   user?:   AuthUser;
+
+  access_token?: string;
+  refresh_token?: string;
 }
 
 export interface AuthUser {
