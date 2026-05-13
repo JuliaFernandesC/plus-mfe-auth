@@ -14,6 +14,12 @@ export function useRegisterForm({ onSubmit }: { onSubmit: (values: any) => Promi
     if (field === "password") {
       if (!value) return "Senha é obrigatória.";
       if (value.length < 6) return "Mínimo 6 caracteres.";
+      if (value.length > 10) return "Máximo 10 caracteres.";
+
+      // Regras de força da senha (Regex)
+      if (!/\d/.test(value)) return "A senha deve conter pelo menos um número.";
+      if (!/[A-Z]/.test(value)) return "A senha deve conter pelo menos uma letra maiúscula.";
+      if (!/[a-z]/.test(value)) return "A senha deve conter pelo menos uma letra minúscula.";
     }
     if (field === "confirmPassword") {
       if (value !== values.password) return "As senhas não coincidem.";

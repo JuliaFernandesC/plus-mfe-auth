@@ -52,7 +52,21 @@ export default function RegisterPage() {
 
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
-        setServerError(data.detail || "Erro ao criar conta.");
+        console.log("Erro do Servidor:", data);
+
+        let errorMessage = "Erro ao criar conta.";
+
+        if (data && data.detail) {
+          if (Array.isArray(data.detail) && data.detail[0]?.msg) {
+            errorMessage = String(data.detail[0].msg);
+          } else if (typeof data.detail === "string") {
+            errorMessage = data.detail;
+          } else {
+            errorMessage = JSON.stringify(data.detail); // Fallback se for um objeto estranho
+          }
+        }
+
+        setServerError(errorMessage);
         return;
       }
       
