@@ -186,21 +186,6 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
               }
             />
 
-            <Box sx={{ textAlign: "right", mt: "-12px !important" }}>
-              <Link
-                href="/forgot-password"
-                sx={{
-                  fontSize: "0.78rem",
-                  color: "#6C63FF",
-                  fontWeight: 600,
-                  textDecoration: "none",
-                  "&:hover": { textDecoration: "underline" },
-                }}
-              >
-                Esqueceu a senha?
-              </Link>
-            </Box>
-
             <Button
               type="submit"
               variant="contained"
