@@ -58,3 +58,6 @@ npm install
 
 # Inicia o servidor de desenvolvimento
 npm run dev
+```
+
+# LOGS DE IA LOCALIZADOS NA PASTA plus-ms-auth/ai_logs
